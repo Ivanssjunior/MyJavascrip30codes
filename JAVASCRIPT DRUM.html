@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>JS Drum KIT</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Drumstyle.css">
 </head>
 <body>
     <div class="keys">
@@ -45,15 +45,32 @@
         </div>
     </div>
 
-    <audio data-key="65" src=""></audio>
-    <audio data-key="83" src=""></audio>
-    <audio data-key="68" src=""></audio>
-    <audio data-key="70" src=""></audio>
-    <audio data-key="71" src=""></audio>
-    <audio data-key="72" src=""></audio>
-    <audio data-key="74" src=""></audio>
-    <audio data-key="75" src=""></audio>
-    <audio data-key="76" src=""></audio>
-</body>
+    <audio data-key="65" src="https://raw.githubusercontent.com/Ivanssjunior/JavaScript30/master/01%20-%20JavaScript%20Drum%20Kit/sounds/boom.wav"></audio>
+    <audio data-key="83" src="https://raw.githubusercontent.com/Ivanssjunior/JavaScript30/master/01%20-%20JavaScript%20Drum%20Kit/sounds/clap.wav"></audio>
+    <audio data-key="68" src="https://raw.githubusercontent.com/Ivanssjunior/JavaScript30/master/01%20-%20JavaScript%20Drum%20Kit/sounds/hihat.wav"></audio>
+    <audio data-key="70" src="https://raw.githubusercontent.com/Ivanssjunior/JavaScript30/master/01%20-%20JavaScript%20Drum%20Kit/sounds/kick.wav"></audio>
+    <audio data-key="71" src="https://raw.githubusercontent.com/Ivanssjunior/JavaScript30/master/01%20-%20JavaScript%20Drum%20Kit/sounds/openhat.wav"></audio>
+    <audio data-key="72" src="https://raw.githubusercontent.com/Ivanssjunior/JavaScript30/master/01%20-%20JavaScript%20Drum%20Kit/sounds/ride.wav"></audio>
+    <audio data-key="74" src="https://raw.githubusercontent.com/Ivanssjunior/JavaScript30/master/01%20-%20JavaScript%20Drum%20Kit/sounds/snare.wav"></audio>
+    <audio data-key="75" src="https://raw.githubusercontent.com/Ivanssjunior/JavaScript30/master/01%20-%20JavaScript%20Drum%20Kit/sounds/tink.wav"></audio>
+    <audio data-key="76" src="https://raw.githubusercontent.com/Ivanssjunior/JavaScript30/master/01%20-%20JavaScript%20Drum%20Kit/sounds/tom.wav"></audio>
+    <script>
+        function removeTransition(e) {
+            if (e.propertyName !=='transform') return;
+            e.target.classlist.remove('playing');
+         }
+         function playSound(e) {
+             const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+             const key = document.querySelector('div[data-key="${e.keyCode}"]');
+            if (!audio) return; 
 
+            key.classList.add('playing');
+            adudio,currentTime = 0
+            audio.play();
+         }
+         const keys = Array.from(document.querySelectorAll('.key'));
+         keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+         window.addEventListener('keydown', playSound); 
+    </script>
+</body>
 </html>
